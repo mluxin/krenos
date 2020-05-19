@@ -25,14 +25,6 @@ class Session extends Model
     }
 
     /**
-     * Get the teacher that owns the session.
-     */
-    public function teacher()
-    {
-        return $this->belongsTo('App\Teacher');
-    }
-
-    /**
      * Get the training that owns the session.
      */
     public function training()

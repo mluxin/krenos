@@ -13,9 +13,9 @@ class Room extends Model
     /**
      * Get the sessions for the room.
      */
-    public function trainings()
+    public function sessions()
     {
-        return $this->hasMany('App\Training');
+        return $this->hasMany('App\Session');
     }
 
 }
