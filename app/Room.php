@@ -9,4 +9,13 @@ class Room extends Model
 {
     // Field that can be filled in the DB
     protected $fillable = ['label'];
+
+    /**
+     * Get the sessions for the room.
+     */
+    public function trainings()
+    {
+        return $this->hasMany('App\Training');
+    }
+
 }

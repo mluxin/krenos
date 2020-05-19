@@ -37,6 +37,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    /**
+     * Get the teacher record associated with the user.
+     */
+    public function teacher()
+    {
+        return $this->hasOne('App\Teacher');
+    }
+
+    /**
+     * Get the employee record associated with the user.
+     */
+    public function employee()
+    {
+        return $this->hasOne('App\Employee');
+    }
+
     //Const creation for admin management
     const ADMIN = 'admin';
     const TEACHER = 'teacher';

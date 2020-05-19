@@ -15,4 +15,12 @@ class Employee extends Model
     {
         return $this->belongsToMany('App\Session');
     }
+
+    /**
+     * Get the phone record associated with the user.
+     */
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
 }
