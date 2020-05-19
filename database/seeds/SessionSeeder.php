@@ -18,7 +18,7 @@ class SessionSeeder extends Seeder
     {
          //SELECT * FROM teachers
         $teacherIds = Teacher::all()->pluck('id');
-          //SELECT * FROM trainings
+        //SELECT * FROM trainings
         $trainings = Training::all();
          //SELECT * FROM rooms
         $roomIds = Room::all()->pluck('id');

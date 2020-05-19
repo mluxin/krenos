@@ -15,4 +15,12 @@ class Session extends Model
         'subscription',
         'feedback',
     ];
+
+     /**
+     * The employees that belong to the session.
+     */
+    public function employees()
+    {
+        return $this->belongsToMany('App\Employee');
+    }
 }
