@@ -46,9 +46,8 @@ class SessionController extends Controller
      * @param  \App\Session  $session
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Session $session)
     {
-        $session = Session::find($id);
         return view('sessions.show', ['sessions'=>$session]);
     }
 

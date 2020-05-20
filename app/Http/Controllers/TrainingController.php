@@ -45,9 +45,8 @@ class TrainingController extends Controller
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Training $training)
     {
-        $training = Training::find($id);
         return view('trainings/show', ['training'=>$training]);
     }
 

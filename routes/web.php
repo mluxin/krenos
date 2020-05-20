@@ -23,11 +23,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Users sessions
 Route::get('/users', 'UserController@index')->name('users.index');
-Route::get('/user/show/{id}', 'UserController@show')->name('users.show');
+Route::get('/user/show/{user}', 'UserController@show')->name('users.show');
 // Trainings route
 Route::get('/trainings', 'TrainingController@index')->name('trainings.index');
-Route::get('/training/show/{id}', 'TrainingController@show')->name('trainings.show');
+Route::get('/training/show/{training}', 'TrainingController@show')->name('trainings.show');
 // Sessions routes
 Route::get('/sessions', 'SessionController@index')->name('sessions.index');
-Route::get('/session/show/{id}', 'SessionController@show')->name('sessions.show');
+Route::get('/session/show/{session}', 'SessionController@show')->name('sessions.show');
 
