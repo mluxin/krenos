@@ -21,14 +21,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Display all Users
+// Users sessions
 Route::get('/users', 'UserController@index')->name('users.index');
-// Display One user
-Route::get('/users/{id}', 'UserController@show')->name('users.show');
+Route::get('/user/show/{id}', 'UserController@show')->name('users.show');
 // Trainings route
 Route::get('/trainings', 'TrainingController@index')->name('trainings.index');
-Route::get('/trainings/{id}', 'TrainingController@show')->name('trainings.show');
+Route::get('/training/show/{id}', 'TrainingController@show')->name('trainings.show');
 // Sessions routes
 Route::get('/sessions', 'SessionController@index')->name('sessions.index');
-Route::get('/sessions/{id}', 'SessionController@show')->name('sessions.show');
+Route::get('/session/show/{id}', 'SessionController@show')->name('sessions.show');
 

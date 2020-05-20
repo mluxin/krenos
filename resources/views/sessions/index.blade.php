@@ -19,10 +19,10 @@
                     <ul>
                         @foreach ($sessions as $session)
                         <li>
-                            <a href="{{url('/sessions', $session->id)}}">{{ $session->label }} </a>
+                            <a href="{{url('/session/show', $session->id)}}">{{ $session->label }} </a>
                         </li>
                         @endforeach
-                    </ul>   
+                    </ul>
                 </div>
             </div>
         </div>
