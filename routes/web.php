@@ -21,28 +21,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-<<<<<<< HEAD
 // Users
 Route::get('/users', 'UserController@index')->name('users/index');
 Route::get('/user/show/{user}', 'UserController@show')->name('user/show');
 Route::post('/users/store', 'UserController@store')->name('user/store');
+Route::get('/users/create', 'UserController@create')->name('users/create');
 
-=======
-// Users sessions
-Route::get('/users', 'UserController@index')->name('users/index');
-Route::get('/user/show/{user}', 'UserController@show')->name('users/show');
->>>>>>> sessions
 // Trainings route
 Route::get('/trainings', 'TrainingController@index')->name('trainings/index');
 Route::get('/training/show/{training}', 'TrainingController@show')->name('trainings/show');
+
 // Sessions routes
 Route::get('/sessions', 'SessionController@index')->name('sessions/index');
-<<<<<<< HEAD
-Route::get('/session/show/{session}', 'SessionController@show')->name('sessions/show');
-// Rooms routes
-Route::get('/rooms', 'RoomController@index')->name('rooms/index');
-Route::get('/room/show/{room}', 'RoomController@show')->name('rooms/show');
-=======
 Route::get('/session/show/{session}', 'SessionController@show')->name('session/show');
 Route::get('/sessions/create', 'SessionController@create')->name('sessions/create');
 Route::post('/sessions/store', 'SessionController@store')->name('session/store');
@@ -50,7 +40,4 @@ Route::post('/sessions/store', 'SessionController@store')->name('session/store')
 Route::get('/session/edit', 'SessionController@edit')->name('sessions/edit');
 Route::post('/session/update', 'SessionController@update')->name('sessions/update');
 
->>>>>>> sessions
 
-// Create Users
-Route::get('/users/create', 'UserController@create')->name('users/create');
