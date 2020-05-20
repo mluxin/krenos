@@ -23,4 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Trainings route
 Route::get('/trainings', 'TrainingController@index')->name('trainings.index');
+Route::get('/trainings/{id}', 'TrainingController@show')->name('trainings.show');
 

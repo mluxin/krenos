@@ -11,7 +11,9 @@
                     <ul>
                       @foreach ($trainings as $training)
                       <li>
-                          Formations : {{ $training->label }} - Professeur id :{{ $training->teacher_id }}
+                          <a href="{{ url('/trainings', $training->id) }}">Formations : {{ $training->label }}</a>
+                          -
+                          <span>Professeur id :{{ $training->teacher_id }}</span>
                       </li>
                       @endforeach
                     </ul>
