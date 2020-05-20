@@ -15,10 +15,10 @@
                     @endif
 
                     <ul>
-                        <li><a href="{{ route('users.index') }}">User's List</a></li>
-                        <li><a href="{{ route('trainings.index') }}">Training's List</a></li>
-                        <li><a href="{{ route('sessions.index') }}">Session's List</a></li>
-                        <li><a href="{{ route('rooms.index') }}">Room's List</a></li>
+                        <li><a href="{{ route('users/index') }}">User's List</a></li>
+                        <li><a href="{{ route('trainings/index') }}">Training's List</a></li>
+                        <li><a href="{{ route('sessions/index') }}">Session's List</a></li>
+                        <li><a href="{{ route('rooms/index') }}">Room's List</a></li>
                     </ul>
                 </div>
             </div>
