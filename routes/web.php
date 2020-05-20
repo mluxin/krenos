@@ -32,6 +32,7 @@ Route::get('/sessions/create', 'SessionController@create')->name('sessions/creat
 Route::post('/sessions/store', 'SessionController@store')->name('session/store');
 Route::get('/session/edit', 'SessionController@edit')->name('sessions/edit');
 Route::post('/session/update', 'SessionController@update')->name('sessions/update');
+
 // Rooms routes
 Route::get('/rooms', 'RoomController@index')->name('rooms/index');
 Route::get('/room/show/{room}', 'RoomController@show')->name('rooms/show');
