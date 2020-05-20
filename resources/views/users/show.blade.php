@@ -14,13 +14,11 @@
                         <th>Nom</th>
                         <th>Mail</th>
                         <th>Rôles</th>
-                        <th>Actions</th>
                     </tr>
                     <tr>
                         <td>{{ $user->name }}</a></td>
                         <td>{{ $user->email }} </td>
                         <td>{{ $user->role }} </td>
-                        <td><a href="">update</a></td>
                     </tr>
                     </table>
                 </div>

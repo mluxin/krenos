@@ -14,14 +14,12 @@
                         <th>Nom</th>
                         <th>Mail</th>
                         <th>Rôles</th>
-                        <th>Actions</th>
                     </tr>
                     @foreach ($users as $user)
                     <tr>
                         <td><a href="{{ url('users', $user->id) }}">{{ $user->name }}</a></td>
                         <td>{{ $user->email }} </td>
                         <td>{{ $user->role }} </td>
-                        <td><a href="">update</a></td>
                     </tr>
                     @endforeach
                     </table>
