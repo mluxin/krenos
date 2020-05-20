@@ -8,21 +8,28 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    <!-- @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif -->
-
+                
                     <h2>Sessions :</h2>
-
-                    <ul>
-                        @foreach ($sessions as $session)
-                        <li>
-                            <a href="{{url('/session/show', $session->id)}}">{{ $session->label }} </a>
-                        </li>
-                        @endforeach
-                    </ul>
+                    <p><a href="{{ route('sessions/create') }}">Ajouter une session</a></p>
+                    <table>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prof</th>
+                        <th>Formation</th>
+                        <th>Inscrits</th>
+                        <th>Détails</th>
+                    </tr>
+                    @foreach ($sessions as $session)
+                    <tr>
+                        <td>{{ $session->label }}</td>
+                        <td>{{ $session->training->teacher->user->name }}</td>
+                        <td>{{ $session->training->label }}</td>
+                        <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
+                        <td><a href="{{route('session/show', $session->id)}}">Voir les détails</a></td>
+                    </tr>
+                    @endforeach
+                    </table>
+                
                 </div>
             </div>
         </div>
