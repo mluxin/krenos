@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <ul>
+                        <li><a href="{{ route('users.index') }}">Users List</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
