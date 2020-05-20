@@ -60,4 +60,11 @@ class User extends Authenticatable
     const EMPLOYEE = 'employee';
     const DEFAULT = 'user';
 
+    const ROLES = [
+        'admin' => self::ADMIN,
+        'teacher' => self::TEACHER,
+        'employee' => self::EMPLOYEE,
+        'default' => self::DEFAULT,
+    ];
+
 }
