@@ -11,7 +11,7 @@
                     <ul>
                       @foreach ($users as $user)
                       <li>
-                          {{ $user->name }} {{ $user->email }}
+                          {{ $user->name }} {{ $user->email }}  {{ $user->email }}
                       </li>
                       @endforeach
                     </ul>
