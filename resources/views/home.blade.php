@@ -15,9 +15,9 @@
                     @endif
 
                     <ul>
-                        <li><a href="{{ route('users.index') }}">Users List</a></li>
-                        <li><a href="{{ route('trainings.index') }}">Trainings List</a></li>
-                        <li><a href="{{ route('sessions.index') }}">Sessions List</a></li>
+                        <li><a href="{{ route('users/index') }}">Users List</a></li>
+                        <li><a href="{{ route('trainings/index') }}">Trainings List</a></li>
+                        <li><a href="{{ route('sessions/index') }}">Sessions List</a></li>
                     </ul>
                 </div>
             </div>
