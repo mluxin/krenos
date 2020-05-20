@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users/index', ['users'=>$users]);
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -25,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = User::ROLES;
+        return view('users.create', ['roles' => $roles]);
     }
 
     /**
@@ -36,7 +37,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->role = $request->role;
+        $user->save();
+
+        return redirect()->route('users/index');
     }
 
     /**
@@ -47,7 +55,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users/show', ['user'=>$user]);
+        return view('users.show', ['user'=>$user]);
     }
 
     /**

@@ -17,12 +17,14 @@
                     </tr>
                     @foreach ($users as $user)
                     <tr>
-                        <td><a href="{{ url('user/show', $user->id) }}">{{ $user->name }}</a></td>
+                        <td><a href="{{ route('user/show', $user->id) }}">{{ $user->name }}</a></td>
                         <td>{{ $user->email }} </td>
                         <td>{{ $user->role }} </td>
                     </tr>
                     @endforeach
                     </table>
+
+                    <button><a href="{{ route('users/create') }}">Create a user</a></button>
                 </div>
             </div>
         </div>
