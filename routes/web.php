@@ -20,3 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Sessions routes
+Route::get('/sessions', 'SessionController@index')->name('sessions.index');
+Route::get('/sessions/{id}', 'SessionController@show')->name('sessions.show');
+
