@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Users List : </div>
+                <div class="card-header">User {{$user->name}} : </div>
 
                 <div class="card-body">
 
@@ -16,14 +16,12 @@
                         <th>Rôles</th>
                         <th>Actions</th>
                     </tr>
-                    @foreach ($users as $user)
                     <tr>
-                        <td><a href="{{ url('users', $user->id) }}">{{ $user->name }}</a></td>
+                        <td>{{ $user->name }}</a></td>
                         <td>{{ $user->email }} </td>
                         <td>{{ $user->role }} </td>
                         <td><a href="">update</a></td>
                     </tr>
-                    @endforeach
                     </table>
                 </div>
             </div>

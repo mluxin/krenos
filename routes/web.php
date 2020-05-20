@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Display all Users
 Route::get('/users', 'UserController@index')->name('users.index');
+// Display One user
+Route::get('/users/{id}', 'UserController@show')->name('users.show');
