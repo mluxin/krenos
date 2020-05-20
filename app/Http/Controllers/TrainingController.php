@@ -15,7 +15,7 @@ class TrainingController extends Controller
     public function index()
     {
         $trainings = Training::all();
-        return view('trainings/index', ['trainings'=>$trainings]);
+        return view('trainings.index', ['trainings'=>$trainings]);
     }
 
     /**
@@ -26,6 +26,7 @@ class TrainingController extends Controller
     public function create()
     {
         //
+        return view('trainings.create');
     }
 
     /**
@@ -36,7 +37,11 @@ class TrainingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $training = new Training;
+        $training->label = $request->label;
+        $training->save();
+
+        return redirect()->route('trainings.index');
     }
 
     /**
@@ -47,7 +52,7 @@ class TrainingController extends Controller
      */
     public function show(Training $training)
     {
-        return view('trainings/show', ['training'=>$training]);
+        return view('trainings.show', ['training'=>$training]);
     }
 
     /**
