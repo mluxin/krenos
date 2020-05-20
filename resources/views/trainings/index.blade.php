@@ -5,18 +5,25 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Trainings List : </div>
+                <div class="card-header">Liste des formations : </div>
 
                 <div class="card-body">
-                    <ul>
+                    <table>
+                      <tr>
+                          <th>Formations</th>
+                          <th>Professeurs</th>
+                          <th>Sessions</th>
+                          <th>Actions</th>
+                      </tr>
                       @foreach ($trainings as $training)
-                      <li>
-                          <a href="{{ url('/training/show', $training->id) }}">Formations : {{ $training->label }}</a>
-                          -
-                          <span>Professeur id :{{ $training->teacher_id }}</span>
-                      </li>
+                        <tr>
+                            <td><a href="{{ url('/training/show', $training->id) }}">{{ $training->label }}</a></td>
+                            <td>{{ $training->teacher->user->name }}</td>
+                            <td>Liste des sessions</td>
+                            <td>Update / Delete</td>
+                        </tr>
                       @endforeach
-                    </ul>
+                    </table>
                 </div>
             </div>
         </div>
