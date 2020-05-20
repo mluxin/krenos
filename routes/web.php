@@ -30,4 +30,6 @@ Route::get('/training/show/{training}', 'TrainingController@show')->name('traini
 // Sessions routes
 Route::get('/sessions', 'SessionController@index')->name('sessions.index');
 Route::get('/session/show/{session}', 'SessionController@show')->name('sessions.show');
-
+// Rooms routes
+Route::get('/rooms', 'RoomController@index')->name('rooms.index');
+Route::get('/room/show/{room}', 'RoomController@show')->name('rooms.show');
