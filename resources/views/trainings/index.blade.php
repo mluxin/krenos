@@ -8,6 +8,9 @@
                 <div class="card-header">Liste des formations : </div>
 
                 <div class="card-body">
+                    <div>
+                      <a href="{{ route('trainings/create') }}">Ajouter une formation</a>
+                    </div>
                     <table>
                       <tr>
                           <th>Formations</th>
@@ -17,7 +20,7 @@
                       </tr>
                       @foreach ($trainings as $training)
                         <tr>
-                            <td><a href="{{ url('/training/show', $training->id) }}">{{ $training->label }}</a></td>
+                            <td><a href="{{ route('trainings/show', $training->id) }}">{{ $training->label }}</a></td>
                             <td>{{ $training->teacher->user->name }}</td>
                             <td>Liste des sessions</td>
                             <td>Update / Delete</td>
