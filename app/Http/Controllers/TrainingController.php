@@ -14,7 +14,8 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        //
+        $trainings = Training::all();
+        return view('trainings/index', ['trainings'=>$trainings]);
     }
 
     /**
