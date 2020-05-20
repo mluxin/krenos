@@ -10,6 +10,7 @@ class Session extends Model
         'teacher_id',
         'training_id',
         'room_id',
+        'label',
         'slot',
         'effective_duration',
         'subscription',
