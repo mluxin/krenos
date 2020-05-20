@@ -26,7 +26,7 @@ class SessionController extends Controller
      */
     public function create()
     {
-        //
+        return view('sessions.create'); 
     }
 
     /**
@@ -37,7 +37,17 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $session = new Session;
+        $session->label = $request->label;
+        $session->teacher_id = $request->teacher_id;
+        $session->training_id = $request->training_id;
+        $session->room_id = $request->room_id;
+        $session->training_day = $request->training_day;
+        $session->feedback = $request->feedback;
+
+        $session->save();
+
+        return redirect()->route('session/show');
     }
 
     /**

@@ -17,6 +17,14 @@ class Session extends Model
         'feedback',
     ];
 
+    /**
+     * Get the teacher that owns the training.
+     */
+    public function teacher()
+    {
+        return $this->belongsTo('App\Teacher');
+    }
+
      /**
      * The employees that belong to the session {PIVOT}
      */
@@ -32,6 +40,7 @@ class Session extends Model
     {
         return $this->belongsTo('App\Training');
     }
+
 
     /**
      * Get the room that owns the session.
