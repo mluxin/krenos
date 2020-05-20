@@ -15,6 +15,7 @@ class CreateSessionsTable extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
+            $table->string('label');
             $table->foreignId('teacher_id');
             $table->foreignId('training_id');
             $table->foreignId('room_id');
