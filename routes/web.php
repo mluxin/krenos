@@ -25,3 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@index')->name('users.index');
 // Display One user
 Route::get('/users/{id}', 'UserController@show')->name('users.show');
+// Trainings route
+Route::get('/trainings', 'TrainingController@index')->name('trainings.index');
+Route::get('/trainings/{id}', 'TrainingController@show')->name('trainings.show');
+

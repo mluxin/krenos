@@ -14,7 +14,8 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        //
+        $trainings = Training::all();
+        return view('trainings/index', ['trainings'=>$trainings]);
     }
 
     /**
@@ -44,9 +45,10 @@ class TrainingController extends Controller
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function show(Training $training)
+    public function show($id)
     {
-        //
+        $training = Training::find($id);
+        return view('trainings/show', ['training'=>$training]);
     }
 
     /**
