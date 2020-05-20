@@ -16,9 +16,9 @@
                         <th>Rôles</th>
                     </tr>
                     <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->role }}</td>
+                        <td>{{ $user->name }} </td>
+                        <td>{{ $user->email }} </td>
+                        <td>{{ $user->role }} </td>
                     </tr>
                     </table>
                 </div>
