@@ -28,4 +28,7 @@ Route::get('/users/{id}', 'UserController@show')->name('users.show');
 // Trainings route
 Route::get('/trainings', 'TrainingController@index')->name('trainings.index');
 Route::get('/trainings/{id}', 'TrainingController@show')->name('trainings.show');
+// Sessions routes
+Route::get('/sessions', 'SessionController@index')->name('sessions.index');
+Route::get('/sessions/{id}', 'SessionController@show')->name('sessions.show');
 

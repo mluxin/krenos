@@ -14,7 +14,9 @@ class SessionController extends Controller
      */
     public function index()
     {
-        //
+         $sessions = Session::all();
+
+        return view('sessions.index', ['sessions'=>$sessions]);
     }
 
     /**
@@ -44,9 +46,10 @@ class SessionController extends Controller
      * @param  \App\Session  $session
      * @return \Illuminate\Http\Response
      */
-    public function show(Session $session)
+    public function show($id)
     {
-        //
+        $session = Session::find($id);
+        return view('sessions.show', ['sessions'=>$session]);
     }
 
     /**
