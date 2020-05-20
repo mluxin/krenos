@@ -35,7 +35,7 @@ Route::post('/trainings/store', 'TrainingController@store')->name('trainings/sto
 
 // Sessions routes
 Route::get('/sessions', 'SessionController@index')->name('sessions/index');
-Route::get('/session/show/{session}', 'SessionController@show')->name('sessions/show');
+Route::get('/session/show/{session}', 'SessionController@show')->name('session/show');
 Route::get('/sessions/create', 'SessionController@create')->name('sessions/create');
 Route::post('/sessions/store', 'SessionController@store')->name('session/store');
 Route::get('/session/edit', 'SessionController@edit')->name('sessions/edit');
