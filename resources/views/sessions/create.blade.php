@@ -8,7 +8,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                
+
                     <h2>Ajouter une session :</h2>
 
 

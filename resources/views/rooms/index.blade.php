@@ -9,16 +9,13 @@
 
                 <div class="card-body">
 
-                <table>
-                    <tr>
-                        <th>Nom</th>
-                    </tr>
+                <ul>
                     @foreach ($rooms as $room)
-                    <tr>
-                        <td><a href="{{ url('room/show', $room->id) }}">{{ $room->label }}</a></td>
-                    </tr>
+                        <li><a href="{{ url('room/show', $room->id) }}">{{ $room->label }}</a></li>
                     @endforeach
-                    </table>
+                </ul>
+
+                <a href="{{ url('rooms/create') }}">Add a room</a>
                 </div>
             </div>
         </div>

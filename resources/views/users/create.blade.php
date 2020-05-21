@@ -11,14 +11,10 @@
 
                 <form method="POST" action="{{ route('user/store') }}">
                         @csrf
-                        <label for="name">Name :</label>
-                        <input id="name" name="name" type="text">
-                        <label for="surname">Email: </label>
-                        <input id="email" name="email" type="text">
-                        <label for="password">Password: </label>
-                        <input id="password" name="password" type="password">
-                        <label for="roles">Roles: </label>
-                        <select name="role">
+                        <input id="name" name="name" type="text" placeholder="Name">
+                        <input id="email" name="email" type="text"  placeholder="Email">
+                        <input id="password" name="password" type="password"  placeholder="Password">
+                        <select name="role"  placeholder="Roles">
                         @foreach ($roles as $role)
                           <option value="{{ $role }}">{{ $role }}</option>
                         @endforeach

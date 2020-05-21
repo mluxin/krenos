@@ -25,7 +25,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('rooms.create');
     }
 
     /**
@@ -36,7 +36,11 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $room = new Room;
+        $room->label = $request->label;
+        $room->save();
+
+        return redirect()->route('rooms/index');
     }
 
     /**

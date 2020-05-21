@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view(‘welcome’);
 });
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 // Users
 Route::get('/users', 'UserController@index')->name('users/index');
 Route::get('/user/show/{user}', 'UserController@show')->name('user/show');
@@ -32,7 +34,8 @@ Route::get('/sessions/create', 'SessionController@create')->name('sessions/creat
 Route::post('/sessions/store', 'SessionController@store')->name('session/store');
 Route::get('/session/edit', 'SessionController@edit')->name('sessions/edit');
 Route::post('/session/update', 'SessionController@update')->name('sessions/update');
-
 // Rooms routes
 Route::get('/rooms', 'RoomController@index')->name('rooms/index');
 Route::get('/room/show/{room}', 'RoomController@show')->name('rooms/show');
+Route::post('/rooms/store', 'RoomController@store')->name('room/store');
+Route::get('/rooms/create', 'RoomController@create')->name('rooms/create');
