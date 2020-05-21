@@ -8,9 +8,30 @@
               <div class="card-header">Formation #{{ $training->label }} par {{ $training->teacher->user->name }} </div>
 
                 <div class="card-body">
-                <h1>Sessions associées</h1>
+                <h2>Sessions associées</h2>
 
-                    <a href="{{ route('sessions/create', $training->id) }}">Create a session for #{{ $training->label }}</a>
+                <table>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prof</th>
+                        <th>Formation</th>
+                        <th>Inscrits</th>
+                        <th>Détails</th>
+                    </tr>
+
+                    @foreach ($training->sessions as $session)
+                    <tr>
+                        <td>{{ $session->label }}</td>
+                        <td>{{ $session->training->teacher->user->name }}</td>
+                        <td>{{ $session->training->label }}</td>
+                        <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
+                        <td><a href="">S'inscrire</a></td>
+                    </tr>
+                    @endforeach
+                </table>
+                <br/>
+                <a href="{{ route('sessions/create', $training) }}">Create a session for #{{ $training->label }}</a>
+
                 </div>
             </div>
         </div>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Session;
+use App\Training;
+use App\Teacher;
+use App\Room;
 use Illuminate\Http\Request;
 
 class SessionController extends Controller
@@ -24,9 +27,11 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Training $training)
     {
-        return view('sessions.create');
+        $teachers = Teacher::all();
+        $rooms = Room::all();
+        return view('sessions.create', ['training'=>$training, 'teachers' => $teachers, 'rooms' => $rooms]);
     }
 
     /**
@@ -35,12 +40,12 @@ class SessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Training $training)
     {
         $session = new Session;
         $session->label = $request->label;
         $session->teacher_id = $request->teacher_id;
-        $session->training_id = $request->training_id;
+        $session->training_id = $training->id;
         $session->room_id = $request->room_id;
         $session->training_day = $request->training_day;
         $session->feedback = $request->feedback;

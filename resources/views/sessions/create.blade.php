@@ -12,34 +12,38 @@
                     <h2>Ajouter une session :</h2>
 
 
-                    <form method="POST" action="{{ route('session/store') }}">
+                    <form method="POST" action="{{ route('session/store', $training) }}">
                         @csrf
-                        <div class=“”>
+                        <div class="">
                         <div>
-                            <label for=“label”>Nom de la session</label>
-                            <input id=“label” type=“text” name=“label” required autofocus>
+                            <label for="label">Nom de la session</label>
+                            <input id="label" type="text" name="label" required autofocus>
                         </div>
                         <div>
-                            <label for=“teacher_id”>Professeur</label>
-                            <input id=“teacher_id” type=“text” name=“teacher_id” required autofocus>
+                            <label for="label">Professeurs</label>
+                            <select name="teacher_id">
+                                @foreach ($teachers as $teacher)
+                                <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div>
-                            <label for="training_id">Formation</label>
-                            <input id="training_id" type=“text” name="training_id" required autofocus>
+                            <label for="room">Salle</label>
+                            <select name="room">
+                                @foreach ($rooms as $room)
+                                <option value="{{ $room->id }}">{{ $room->label }}</option>
+
+                                @endforeach
+                            </select>
                         </div>
                         <div>
-                            <label for=“room_id”>Salle</label>
-                            <input id=“room_id” type=“text” name=“room_id” required autofocus>
+                            <label for="training_day">Date</label>
+                            <input id="training_day" type="date" name="training_day" required autofocus>
                         </div>
                         <div>
-                            <label for=“training_day”>Date</label>
-                            <input id=“training_day” type=“date” name=“training_day” required autofocus>
+                            <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Ecrivez votre compte-rendu ici"></textarea>
                         </div>
-                        <div>
-                            <label for=“feedback”>Compte-rendu</label>
-                            <input id=“feedback” type=“text” name=“feedback” required autofocus>
-                        </div>
-                            <button type=“submit”>
+                            <button type="submit">
                                 Ajouter la session
                             </button>
                         </div>

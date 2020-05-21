@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Training;
+use App\Teacher;
 use Illuminate\Http\Request;
 
 class TrainingController extends Controller
@@ -25,8 +26,8 @@ class TrainingController extends Controller
      */
     public function create()
     {
-        //
-        return view('trainings.create');
+        $teachers = Teacher::all();
+        return view('trainings.create', ['teachers' => $teachers]);
     }
 
     /**
@@ -39,9 +40,10 @@ class TrainingController extends Controller
     {
         $training = new Training;
         $training->label = $request->label;
+        $training->teacher_id = $request->teacher_id;
         $training->save();
 
-        return redirect()->route('trainings.index');
+        return redirect()->route('trainings/index');
     }
 
     /**
