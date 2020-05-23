@@ -25,4 +25,14 @@ class Teacher extends Model
         return $this->hasMany('App\Training');
     }
 
+     /**
+     * Get the sessions for the teacher.
+     */
+    public function sessions()
+    {
+        return $this->hasMany('App\Session');
+    }
+
+
+
 }

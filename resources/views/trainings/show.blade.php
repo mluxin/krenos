@@ -12,9 +12,11 @@
 
                 <table>
                     <tr>
-                        <th>Nom</th>
-                        <th>Prof</th>
-                        <th>Formation</th>
+                        <th>Noms</th>
+                        <th>Profs</th>
+                        <th>Formations</th>
+                        <th>Dates</th>
+                        <th>Salles</th>
                         <th>Inscrits</th>
                         <th>Détails</th>
                     </tr>
@@ -22,8 +24,10 @@
                     @foreach ($training->sessions as $session)
                     <tr>
                         <td>{{ $session->label }}</td>
-                        <td>{{ $session->training->teacher->user->name }}</td>
+                        <td>{{ $session->teacher->user->name }}</td>
                         <td>{{ $session->training->label }}</td>
+                        <td>{{ $session->training_day }}</td>
+                        <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
                         <td><a href="">S'inscrire</a></td>
                     </tr>

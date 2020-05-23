@@ -29,9 +29,7 @@ class SessionController extends Controller
      */
     public function create(Training $training)
     {
-        $teachers = Teacher::all();
-        $rooms = Room::all();
-        return view('sessions.create', ['training'=>$training, 'teachers' => $teachers, 'rooms' => $rooms]);
+        return view('sessions.create', ['training' => $training]);
     }
 
     /**
@@ -48,11 +46,10 @@ class SessionController extends Controller
         $session->training_id = $training->id;
         $session->room_id = $request->room_id;
         $session->training_day = $request->training_day;
-        $session->feedback = $request->feedback;
 
         $session->save();
 
-        return redirect()->route('session/show');
+        return redirect()->route('trainings/show', ['training' => $training]);
     }
 
     /**
@@ -99,4 +96,52 @@ class SessionController extends Controller
     {
         //
     }
+
+    public function getRoomsAndTeachers(Request $request, $date)
+    {
+
+        $trainingDaySessions = Session::query()->where('training_day', '=', $date)->get();
+
+        if ($trainingDaySessions->isEmpty())
+        {
+            // Push rooms' label into an array
+            $roomsLabel = [];
+            $rooms = Room::all()->each(function($room) use(&$roomsLabel){
+                $roomsLabel[$room->id] = $room->label;
+            });;
+
+            // Push teachers' name into an array
+            $teachersName = [];
+            $teachers = Teacher::all()->each(function($teacher) use(&$teachersName){
+                $teachersName[$teacher->id] = $teacher->user->name;
+            });
+
+            return response()->json(['rooms' => $roomsLabel, 'teachers' => $teachersName]);
+        }
+        else
+        {
+             /**
+             * Get all rooms'ids
+             * Make the difference (compare) between rooms'ids
+             * And rooms'ids from trainingDaySessions (selected date)
+             * Same for teachers
+             */
+            $rooms = Room::all()->pluck('id')->diff($trainingDaySessions->pluck('room_id'));
+            $teachers = Teacher::all()->pluck('id')->diff($trainingDaySessions->pluck('teacher_id'));
+
+            $roomsLabel = [];
+            $teachersName = [];
+
+            $rooms->each(function($room) use(&$roomsLabel) {
+                $roomsLabel[$room] = Room::query()->where('id', '=', $room)->pluck('label')->first();
+            });
+
+            $teachers->each(function($teacher) use(&$teachersName){
+                $teachersName[$teacher] = Teacher::query()->where('id', '=', $teacher)->first()->user->name;
+            });
+
+            return response()->json(['rooms' => $roomsLabel, 'teachers' => $teachersName]);
+        }
+    }
+
 }
