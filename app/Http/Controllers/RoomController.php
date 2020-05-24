@@ -54,6 +54,7 @@ class RoomController extends Controller
         return view('rooms/show', ['room'=>$room]);
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -62,7 +63,7 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        return view('rooms.edit', ['room'=>$room]);
     }
 
     /**
@@ -72,9 +73,13 @@ class RoomController extends Controller
      * @param  \App\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request, $id)
     {
-        //
+        $room = Room::find($id);
+        $room->label = $request->label;
+        $room->save();
+
+        return redirect()->route('rooms/index');
     }
 
     /**
@@ -85,6 +90,8 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        $room->delete();
+
+        return redirect()->route('rooms/index');
     }
 }

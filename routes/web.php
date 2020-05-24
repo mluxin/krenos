@@ -39,6 +39,11 @@ Route::get('/rooms', 'RoomController@index')->name('rooms/index');
 Route::get('/room/show/{room}', 'RoomController@show')->name('rooms/show');
 Route::post('/rooms/store', 'RoomController@store')->name('room/store');
 Route::get('/rooms/create', 'RoomController@create')->name('rooms/create');
+Route::get('/room/edit/{room}', 'RoomController@edit')->name('room/edit');
+Route::post('/room/update/{room}', 'RoomController@update')->name('room/update');
+Route::get('/room/destroy/{room}', 'RoomController@destroy')->name('room/destroy');
+
+
 
 
 // Date validation
