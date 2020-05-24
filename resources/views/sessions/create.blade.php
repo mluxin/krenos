@@ -48,7 +48,7 @@
 </div>
 @endsection
 
-<!-- Ajax request to check which rooms and teachers are availables at this date-->
+<!-- Ajax request to check which rooms and teachers are availables at a date selected-->
 
 @section('js')
     <script>
