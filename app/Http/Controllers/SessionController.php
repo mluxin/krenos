@@ -6,7 +6,9 @@ use App\Session;
 use App\Training;
 use App\Teacher;
 use App\Room;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
@@ -60,7 +62,7 @@ class SessionController extends Controller
      */
     public function show(Session $session)
     {
-        return view('sessions.show', ['sessions'=>$session]);
+        return view('sessions.show', ['session'=>$session]);
     }
 
     /**
@@ -71,7 +73,7 @@ class SessionController extends Controller
      */
     public function edit(Session $session)
     {
-        //
+        return view('sessions.edit', ['session'=>$session]);
     }
 
     /**
@@ -83,7 +85,17 @@ class SessionController extends Controller
      */
     public function update(Request $request, Session $session)
     {
-        //
+        $session->update([
+            'teacher_id' => $request->teacher_id,
+            'room_id' => $request->room_id,
+            'training_day' => $request->training_day,
+        ]);
+
+        if (Auth::user()->role === User::ADMIN)
+        {
+            return redirect()->route('sessions/index');
+        }
+        return redirect()->route('trainings/show', ['training' => $session->training]);
     }
 
     /**
@@ -94,14 +106,46 @@ class SessionController extends Controller
      */
     public function destroy(Session $session)
     {
-        //
+        $session->delete();
+
+        return redirect()->back();
     }
 
     public function getRoomsAndTeachers(Request $request, $date)
     {
-
+        $sessionId = $request->get('session');
         $trainingDaySessions = Session::query()->where('training_day', '=', $date)->get();
 
+        /**
+        * We are editing a session, bc session is not null (has an id)
+        */
+        if (!is_null($sessionId))
+        {
+            // Exclude current session from trainingDaySessions array
+            $currentSession = $trainingDaySessions->search(function($session) use($sessionId) {
+                return $session->id == $sessionId;
+            });
+            $trainingDaySessions->pull($currentSession);
+
+            // Push rooms' label into an array
+            $roomsLabel = [];
+            $rooms = Room::all()->each(function($room) use(&$roomsLabel){
+                $roomsLabel[$room->id] = $room->label;
+            });;
+
+            // Push teachers' name into an array
+            $teachersName = [];
+            $teachers = Teacher::all()->each(function($teacher) use(&$teachersName){
+                $teachersName[$teacher->id] = $teacher->user->name;
+            });
+
+            return response()->json(['rooms' => $roomsLabel, 'teachers' => $teachersName]);
+        }
+
+        /**
+        * We are creating a new session.
+        * We check if trainingDaySessions is empty = return all rooms and teachers
+        */
         if ($trainingDaySessions->isEmpty())
         {
             // Push rooms' label into an array

@@ -25,6 +25,7 @@ class CreateSessionsTable extends Migration
             $table->integer('subscription')->default(0);
             $table->integer('max_subscription')->default(20);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

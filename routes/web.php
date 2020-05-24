@@ -29,11 +29,12 @@ Route::get('/trainings/create', 'TrainingController@create')->name('trainings/cr
 Route::post('/trainings/store', 'TrainingController@store')->name('trainings/store');
 // Sessions routes
 Route::get('/sessions', 'SessionController@index')->name('sessions/index');
-Route::get('/session/show/{session}', 'SessionController@show')->name('session/show');
+Route::get('/session/{session}/show', 'SessionController@show')->name('session/show');
 Route::get('/training/{training}/sessions/create', 'SessionController@create')->name('sessions/create');
 Route::post('/training/{training}/sessions/store', 'SessionController@store')->name('session/store');
-Route::get('/session/edit', 'SessionController@edit')->name('sessions/edit');
-Route::post('/session/update', 'SessionController@update')->name('sessions/update');
+Route::get('/session/{session}/edit', 'SessionController@edit')->name('session/edit');
+Route::post('/session/{session}/update', 'SessionController@update')->name('session/update');
+Route::get('/session/{session}/destroy', 'SessionController@destroy')->name('session/destroy');
 // Rooms routes
 Route::get('/rooms', 'RoomController@index')->name('rooms/index');
 Route::get('/room/show/{room}', 'RoomController@show')->name('rooms/show');

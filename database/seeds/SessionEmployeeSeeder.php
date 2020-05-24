@@ -22,6 +22,15 @@ class SessionEmployeeSeeder extends Seeder
         self::linkUxSessionToEmployee($trainings);
         self::linkJsSessionToEmployee($trainings);
         self::linkDesignSessionToEmployee($trainings);
+
+        $sessions = Session::all();
+        foreach($sessions as $session) {
+            // update bc sessions are already created by the seeder
+            $session->update([
+                // count employees for this session and $session->employees return a collection
+                'subscription' => $session->employees->count()
+            ]);
+        };
     }
 
     private function linkPhpSessionToEmployee($trainings)

@@ -50,7 +50,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[0],
                 'label' => 'Laravel',
                 'training_day' => '2020-09-01',
-                'subscription' => 12,
             ],
             [
                 'teacher_id' => $teachers[1],
@@ -58,7 +57,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[1],
                 'label' => 'Symphonie',
                 'training_day' => '2020-09-02',
-                'subscription' => 14,
             ],
         ];
 
@@ -83,7 +81,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[4],
                 'label' => 'Gestion du personnel',
                 'training_day' => '2020-10-01',
-                'subscription' => 10,
             ],
             [
                 'teacher_id' => $teachers[0],
@@ -91,7 +88,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[2],
                 'label' => 'Stratégies',
                 'training_day' => '2020-10-09',
-                'subscription' => 18,
             ],
         ];
 
@@ -116,7 +112,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[3],
                 'label' => 'User Journey',
                 'training_day' => '2020-10-015',
-                'subscription' => 5,
             ],
             [
                 'teacher_id' => $teachers[0],
@@ -124,7 +119,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[0],
                 'label' => 'Story Telling',
                 'training_day' => '2020-10-22',
-                'subscription' => 11,
             ],
         ];
 
@@ -149,7 +143,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[1],
                 'label' => 'Asynch',
                 'training_day' => '2020-11-03',
-                'subscription' => 5,
             ],
             [
                 'teacher_id' => $teachers[0],
@@ -157,7 +150,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[0],
                 'label' => 'Node.js',
                 'training_day' => '2020-11-16',
-                'subscription' => 11,
             ],
         ];
 
@@ -182,7 +174,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[3],
                 'label' => 'Wireframe',
                 'training_day' => '2020-11-10',
-                'subscription' => 6,
             ],
             [
                 'teacher_id' => $teachers[0],
@@ -190,7 +181,6 @@ class SessionSeeder extends Seeder
                 'room_id' => $rooms[0],
                 'label' => 'Intégration',
                 'training_day' => '2020-12-06',
-                'subscription' => 19,
             ],
         ];
 

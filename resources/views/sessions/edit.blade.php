@@ -1,0 +1,103 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ $session->label }} pour la formation #{{ $session->training->label }} </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('session/update', $session) }}">
+                        @csrf
+                        <div class="">
+                            <div>
+                                <p> Prof actuel : {{ $session->teacher->user->name }}</p>
+                                <p> Salle actuelle :  {{ $session->room->label }} </p>
+                            </div>
+                            <div>
+                                <label for="training_day">Date</label>
+                                <input id="training_day" type="date" name="training_day" required autofocus value="{{ $session->training_day }}">
+                                <button type="button" id="check_valid" >check dispo</button>
+                            </div>
+                            <div id="dynamic_inputs" style="display : none;">
+                                <div>
+                                    <label for="teacher_id">Professeurs</label>
+                                    <select name="teacher_id" id="teacher_id">
+                                        <option value="{{ $session->teacher_id }}">{{ $session->teacher->user->name }}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="room_id">Salle</label>
+                                    <select name="room_id" id="room_id">
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit">Modifier</button>
+                            <a href="{{ url()->previous() }}">Annuler</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+<!-- Ajax request to check which rooms and teachers are availables at a date selected-->
+<!-- Giving session's id in data ajax request -->
+
+@section('js')
+    <script>
+        document.getElementById('check_valid').addEventListener('click', () => {
+            const date = document.getElementById('training_day').value;
+            const route = "{{ url('getDate') }}/";
+            const url = route + date;
+            const session = "{{$session->id}}";
+
+            $.ajax({
+                url: url,
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method: 'post',
+                data : { session : session }
+            }).done( (data) => {
+                const selects = document.getElementById('dynamic_inputs');
+                selects.style.display = 'block';
+
+                const teacherSelect = document.getElementById('teacher_id');
+                // Remove all options from the teacher select
+                $("#teacher_id").empty();
+                if(data.teachers.length != 0) {
+                    for (let index in data.teachers) {
+                        const optionTeacher = document.createElement('option');
+                        optionTeacher.text = data.teachers[index];
+                        optionTeacher.value = index;
+                        teacherSelect.add(optionTeacher);
+                    }
+                } else {
+                    const optionTeacher = document.createElement('option');
+                    optionTeacher.text = 'Aucun professeur disponible à cette date';
+                    teacherSelect.add(optionTeacher);
+                }
+
+                const roomSelect = document.getElementById('room_id');
+                // Remove all options from the room select
+                $("#room_id").empty();
+                if(data.rooms.length != 0) {
+                    for (let index in data.rooms) {
+                        const optionRoom = document.createElement('option');
+                        optionRoom.text = data.rooms[index];
+                        optionRoom.value = index;
+                        roomSelect.add(optionRoom);
+                    }
+                } else {
+                    const optionRoom = document.createElement('option');
+                    optionRoom.text = 'Aucune salle disponible à cette date';
+                    roomSelect.add(optionRoom);
+                }
+            })
+        })
+
+    </script>
+@endsection
