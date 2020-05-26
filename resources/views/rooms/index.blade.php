@@ -9,11 +9,18 @@
 
                 <div class="card-body">
 
-                <ul>
+                 <table>
+                    <tr>
+                        <th>Label</th>
+                        <th>Actions</th>
+                    </tr>
                     @foreach ($rooms as $room)
-                        <li><a href="{{ url('room/show', $room->id) }}">{{ $room->label }}</a></li>
+                    <tr>
+                        <td><a href="{{ url('room/show', $room->id) }}">{{ $room->label }}</a></td>
+                        <td><a class="btn btn-primary" href="{{ url('room/edit', $room->id) }}">Edit</a> <a class="btn btn-danger" href="{{ url('room/destroy', $room->id) }}">Delete</a> </td>
+                    </tr>
                     @endforeach
-                </ul>
+                    </table>
 
                 <a href="{{ url('rooms/create') }}">Add a room</a>
                 </div>
