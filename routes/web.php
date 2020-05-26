@@ -50,7 +50,5 @@ Route::get('/room/edit/{room}', 'RoomController@edit')->name('room/edit');
 Route::post('/room/update/{room}', 'RoomController@update')->name('room/update');
 Route::get('/room/destroy/{room}', 'RoomController@destroy')->name('room/destroy');
 
-
-
 // Date validation
 Route::post('/getDate/{date}', 'SessionController@getRoomsAndTeachers')->name('getDate');
