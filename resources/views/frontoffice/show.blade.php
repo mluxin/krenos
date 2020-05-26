@@ -27,7 +27,13 @@
                         <td>{{ $session->training_day }}</td>
                         <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
-                        <td><a href="">S'inscrire</a></td>
+                        <td>
+                          <form method="POST" action="{{ route('frontoffice/subscription') }}">
+                            @csrf
+                            <input type="hidden" value="{{ $session->id }}" name="session">
+                            <button type="submit">S'inscrire</button>
+                          </form>
+                        </td>
                     </tr>
                     @endforeach
                 </table>
