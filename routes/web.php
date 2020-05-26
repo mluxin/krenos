@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Route;
 | contains the “web” middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Front office
+Route::get('/', 'FrontOfficeController@index')->name('frontoffice/index');
+Route::get('/{training}/show', 'FrontOfficeController@show')->name('frontoffice/show');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -40,7 +41,6 @@ Route::get('/rooms', 'RoomController@index')->name('rooms/index');
 Route::get('/room/show/{room}', 'RoomController@show')->name('rooms/show');
 Route::post('/rooms/store', 'RoomController@store')->name('room/store');
 Route::get('/rooms/create', 'RoomController@create')->name('rooms/create');
-
 
 // Date validation
 Route::post('/getDate/{date}', 'SessionController@getRoomsAndTeachers')->name('getDate');
