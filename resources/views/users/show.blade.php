@@ -24,6 +24,7 @@
             <div class="card">
                 <div class="card-header">Sessions associées: </div>
                 <div class="card-body">
+                @if($user->employee && $user->employee->sessions->count() > 0)
                 <table>
                     <tr>
                         <th>Noms</th>
@@ -42,10 +43,19 @@
                         <td>{{ $session->training_day }}</td>
                         <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
-                        <td><a href="{{ route('') }}">Désinscrire</a></td>
+                        <td>
+                            <form method="POST" action="{{ route('session/unsubscribe') }}">
+                                @csrf
+                                <input type="hidden" value="{{ $session->id }}" name="session">
+                                <button type="submit">Désinscrire</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     </table>
+                    @else
+                    <p>Aucune session</p>
+                    @endif
                 </div>
             </div>
         </div>

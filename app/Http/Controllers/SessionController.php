@@ -188,4 +188,26 @@ class SessionController extends Controller
         }
     }
 
+     /**
+     * Subscribe to a session
+     */
+    public function subscribe(Request $request)
+    {
+        // sessions() instead of sessions, bc we want to attach employee_id and session_id,
+        // not every sessions for this employee
+        Auth::user()->employee->sessions()->attach($request->session);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Unsubscribe to a session
+     */
+    public function unsubscribe(Request $request)
+    {
+        Auth::user()->employee->sessions()->detach($request->session);
+
+        return redirect()->back();
+    }
+
 }

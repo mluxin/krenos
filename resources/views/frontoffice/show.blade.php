@@ -28,7 +28,7 @@
                         <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
                         <td>
-                          <form method="POST" action="{{ route('frontoffice/subscription') }}">
+                          <form method="POST" action="{{ route('session/subscribe') }}">
                             @csrf
                             <input type="hidden" value="{{ $session->id }}" name="session">
                             <button type="submit">S'inscrire</button>

@@ -29,19 +29,4 @@ class FrontOfficeController extends Controller
     {
         return view('frontoffice.show', ['training' => $training]);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function subscription(Request $request)
-    {
-        // sessions() instead of sessions, bc we want to attach employee_id and session_id,
-        // not every sessions for this employee
-        Auth::user()->employee->sessions()->attach($request->session);
-
-        return redirect()->back();
-    }
-
 }
