@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 // Front office
 Route::get('/', 'FrontOfficeController@index')->name('frontoffice/index');
 Route::get('/{training}/show', 'FrontOfficeController@show')->name('frontoffice/show');
+Route::post('/subscription', 'FrontOfficeController@subscription')->name('frontoffice/subscription')->middleware('auth');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
