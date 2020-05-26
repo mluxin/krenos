@@ -14,12 +14,14 @@
                         <th>Nom</th>
                         <th>Mail</th>
                         <th>Rôles</th>
+                        <th></th>
                     </tr>
                     @foreach ($users as $user)
                     <tr>
                         <td><a href="{{ route('user/show', $user->id) }}">{{ $user->name }}</a></td>
                         <td>{{ $user->email }} </td>
                         <td>{{ $user->role }} </td>
+                        <td><a class="btn btn-primary" href="{{ route('user/edit', $user->id) }}">Edit</a> <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{ route('user/destroy', $user->id) }}">Delete</a></td>
                     </tr>
                     @endforeach
                     </table>

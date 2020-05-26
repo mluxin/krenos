@@ -23,6 +23,10 @@ Route::get('/users', 'UserController@index')->name('users/index');
 Route::get('/user/show/{user}', 'UserController@show')->name('user/show');
 Route::post('/users/store', 'UserController@store')->name('user/store');
 Route::get('/users/create', 'UserController@create')->name('users/create');
+Route::get('/user/destroy/{user}', 'UserController@destroy')->name('user/destroy');
+Route::get('/user/edit/{user}', 'UserController@edit')->name('user/edit');
+Route::post('/user/update/{user}', 'UserController@update')->name('user/update');
+
 // Trainings route
 Route::get('/trainings', 'TrainingController@index')->name('trainings/index');
 Route::get('/training/{training}/show', 'TrainingController@show')->name('trainings/show');
