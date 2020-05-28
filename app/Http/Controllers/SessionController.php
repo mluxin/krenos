@@ -193,9 +193,13 @@ class SessionController extends Controller
      */
     public function subscribe(Request $request)
     {
+        $session = Session::find($request->session);
         // sessions() instead of sessions, bc we want to attach employee_id and session_id,
         // not every sessions for this employee
-        Auth::user()->employee->sessions()->attach($request->session);
+        Auth::user()->employee->sessions()->attach($session->id);
+        $session->update([
+            'subscription' => $session->subscription + 1,
+            ]);
 
         return redirect()->back();
     }
@@ -205,7 +209,11 @@ class SessionController extends Controller
      */
     public function unsubscribe(Request $request)
     {
-        Auth::user()->employee->sessions()->detach($request->session);
+        $session = Session::find($request->session);
+        Auth::user()->employee->sessions()->detach($session->id);
+        $session->update([
+            'subscription' => $session->subscription - 1,
+            ]);
 
         return redirect()->back();
     }
