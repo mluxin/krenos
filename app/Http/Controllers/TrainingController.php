@@ -75,11 +75,12 @@ class TrainingController extends Controller
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Training $training)
     {
-        $training = Training::find($id);
-        $training->label = $request->label;
-        $training->save();
+        $training->update([
+            'teacher_id' => $request->teacher_id,
+            'label' => $request->label,
+        ]);
 
         return redirect()->route('trainings/index');
     }

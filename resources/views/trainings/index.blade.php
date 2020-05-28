@@ -21,7 +21,10 @@
                         <tr>
                             <td><a href="{{ route('trainings/show', $training->id) }}">{{ $training->label }}</a></td>
                             <td>{{ $training->teacher->user->name }}</td>
-                            <td><a class="btn btn-primary" href="{{ url('trainings/edit', $training->id) }}">Edit</a> <a class="btn btn-danger">Delete</a> </td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ url('trainings/edit', $training) }}">Edit</a>
+                                <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{ url('trainings/destroy', $training->id) }}">Delete</a>
+                            </td>
                         </tr>
                       @endforeach
                     </table>
