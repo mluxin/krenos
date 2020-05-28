@@ -18,6 +18,7 @@ class CreateTrainingsTable extends Migration
             $table->string('label');
             $table->foreignId('teacher_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

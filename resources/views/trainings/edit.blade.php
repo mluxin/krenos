@@ -20,12 +20,15 @@
                                   <input id="name" name="label" type="text" value="{{$training->label}}">
                             </div>
                             <div>
-                                <label for="teacher_id">Professeurs disponibles :</label>
-                                <select name="teacher_id" id="teacher_id">
-                                    <option value="{{ $training->teacher_id }}">{{ $training->teacher->user->name }}</option>
-                                </select>
+                                  <label for="teacher_id">Professeurs</label>
+                                  <select name="teacher_id"  placeholder="Teachers">
+                                      @foreach ($teachers as $teacher)
+                                        <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
+                                      @endforeach
+                                  </select>
                             </div>
                             <button type="submit">Edit</button>
+                            <a href="{{ url()->previous() }}">Annuler</a>
                         </div>
                 </form>
 

@@ -13,7 +13,7 @@
                             <input id="label" name="label" type="text" placeholder="Label">
                             <select name="teacher_id"  placeholder="Teachers">
                                 @foreach ($teachers as $teacher)
-                                <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
+                                    <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
                                 @endforeach
                             </select>
                             <button type=“submit”>Create new training</button>
