@@ -17,7 +17,7 @@
                     @foreach ($rooms as $room)
                     <tr>
                         <td><a href="{{ url('room/show', $room->id) }}">{{ $room->label }}</a></td>
-                        <td><a class="btn btn-primary" href="{{ url('room/edit', $room->id) }}">Edit</a> <a class="btn btn-danger" href="{{ url('room/destroy', $room->id) }}">Delete</a> </td>
+                        <td><a class="btn btn-primary" href="{{ url('room/edit', $room->id) }}">Edit</a> <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{ url('room/destroy', $room->id) }}">Delete</a> </td>
                     </tr>
                     @endforeach
                     </table>
