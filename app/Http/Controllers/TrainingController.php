@@ -65,7 +65,7 @@ class TrainingController extends Controller
      */
     public function edit(Training $training)
     {
-        //
+        return view('trainings.edit', ['training'=>$training]);
     }
 
     /**
@@ -75,9 +75,13 @@ class TrainingController extends Controller
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Training $training)
+    public function update(Request $request, $id)
     {
-        //
+        $training = Training::find($id);
+        $training->label = $request->label;
+        $training->save();
+
+        return redirect()->route('trainings/index');
     }
 
     /**

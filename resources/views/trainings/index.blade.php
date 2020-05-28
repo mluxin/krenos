@@ -21,7 +21,7 @@
                         <tr>
                             <td><a href="{{ route('trainings/show', $training->id) }}">{{ $training->label }}</a></td>
                             <td>{{ $training->teacher->user->name }}</td>
-                            <td>Update / Delete</td>
+                            <td><a class="btn btn-primary" href="{{ url('trainings/edit', $training->id) }}">Edit</a> <a class="btn btn-danger">Delete</a> </td>
                         </tr>
                       @endforeach
                     </table>
