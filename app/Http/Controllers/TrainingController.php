@@ -65,7 +65,9 @@ class TrainingController extends Controller
      */
     public function edit(Training $training)
     {
-        //
+        // return view('trainings.edit', ['training'=>$training]);
+        $teachers = Teacher::all();
+        return view('trainings.edit', ['training'=>$training], ['teachers' => $teachers]);
     }
 
     /**
@@ -77,7 +79,12 @@ class TrainingController extends Controller
      */
     public function update(Request $request, Training $training)
     {
-        //
+        $training->update([
+            'teacher_id' => $request->teacher_id,
+            'label' => $request->label
+        ]);
+
+        return redirect()->route('trainings/index');
     }
 
     /**
@@ -88,6 +95,8 @@ class TrainingController extends Controller
      */
     public function destroy(Training $training)
     {
-        //
+        $training->delete();
+
+        return redirect()->route('trainings/index');
     }
 }
