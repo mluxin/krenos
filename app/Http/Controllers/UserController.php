@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 
@@ -100,5 +102,35 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users/index');
+    }
+
+    public function profile()
+    {
+        return view('users.profile');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+        return redirect()->back();
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        if(Hash::check($request->password, $user->password))
+        {
+            if($request->new_password === $request->password_confirmation)
+            {
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+            }
+        }
+
+        return redirect()->back();
     }
 }

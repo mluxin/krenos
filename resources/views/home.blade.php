@@ -14,6 +14,7 @@
                 @elseif(auth()->user()->role == App\User::EMPLOYEE)
                     @include('dashboards.employee')
                 @else
+                    <a href="{{ route('profile') }}">Mon profile</a>
                     <p>Votre compte est en attente de validation par l'administrateur</p>
                 @endif
                 </div>

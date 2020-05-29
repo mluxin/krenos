@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/profile', 'UserController@profile')->name('profile');
+  Route::post('/updateProfile', 'UserController@updateProfile')->name('updateProfile');
+  Route::post('/updatePassword', 'UserController@updatePassword')->name('updatePassword');
 
   Route::middleware(['checkAdmin'])->group(function () {
     //Sessions
