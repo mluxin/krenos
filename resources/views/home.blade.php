@@ -6,19 +6,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <ul>
-                        <li><a href="{{ route('users/index') }}">User's List</a></li>
-                        <li><a href="{{ route('trainings/index') }}">Training's List</a></li>
-                        <li><a href="{{ route('sessions/index') }}">Session's List (admin view)</a></li>
-                        <li><a href="{{ route('rooms/index') }}">Room's List</a></li>
-                    </ul>
+                @if(auth()->user()->role == App\User::ADMIN)
+                    @include('dashboards.admin')
+                @elseif(auth()->user()->role == App\User::TEACHER)
+                    @include('dashboards.teacher')
+                @elseif(auth()->user()->role == App\User::EMPLOYEE)
+                    @include('dashboards.employee')
+                @else
+                    <p>Votre compte est en attente de validation par l'administrateur</p>
+                @endif
                 </div>
             </div>
         </div>
