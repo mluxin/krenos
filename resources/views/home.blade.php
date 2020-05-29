@@ -13,7 +13,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     <ul>
                         <li><a href="{{ route('users/index') }}">User's List</a></li>
                         <li><a href="{{ route('trainings/index') }}">Training's List</a></li>
