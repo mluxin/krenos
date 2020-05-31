@@ -21,7 +21,6 @@
                         <th>Editer</th>
                         <th>Supprimer</th>
                     </tr>
-
                     @foreach ($training->sessions as $session)
                     <tr>
                         <td><a href="{{ route('session/show', $session) }}">{{ $session->label }}</a></td>
@@ -37,7 +36,6 @@
                 </table>
                 <br/>
                 <a href="{{ route('sessions/create', $training) }}">Create a session for #{{ $training->label }}</a>
-
                 </div>
             </div>
         </div>
