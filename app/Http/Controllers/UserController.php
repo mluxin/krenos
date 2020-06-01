@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all()->sortBy('role');
+        $users = User::query()->where('role', '!=', User::DEFAULT)->get()->sortBy('role');
         return view('users.index', ['users' => $users]);
     }
 
@@ -34,9 +34,8 @@ class UserController extends Controller
         return view('users.editrole', ['user'=>$user], ['roles' => $roles]);
     }
 
-    public function updateRole($id, Request $request)
+    public function updateRole(User $user, Request $request)
     {
-        $user = User::find($id);
         $user->role = $request->role;
         $user->save();
 
@@ -103,9 +102,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update(User $user, Request $request)
     {
-        $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role = $request->role;

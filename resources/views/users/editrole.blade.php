@@ -9,8 +9,8 @@
                 <div class="card-body">
                 <form method="POST" action="{{ route('user/updateRole', $user->id) }}">
                         @csrf
-                        <input id="name" name="name" type="text" value="{{$user->name}}">
-                        <input id="email" name="email" type="text"  value="{{$user->email}}">
+                        <p>{{$user->name}}</p>
+                        <p>{{$user->email}}</p>
                         <select name="role"  placeholder="Roles">
                         @foreach ($roles as $role)
                           <option value="{{ $role }}">{{ $role }}</option>
