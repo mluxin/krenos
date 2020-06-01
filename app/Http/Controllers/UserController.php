@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Teacher;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 use Illuminate\Http\Request;
 
@@ -16,8 +18,29 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::all()->sortBy('role');
         return view('users.index', ['users' => $users]);
+    }
+
+    public function validation()
+    {
+        $users = User::query()->where('role', '=', User::DEFAULT)->get();
+        return view('users.validation', ['users' => $users]);
+    }
+
+    public function editRole(User $user)
+    {
+        $roles = User::ROLES;
+        return view('users.editrole', ['user'=>$user], ['roles' => $roles]);
+    }
+
+    public function updateRole($id, Request $request)
+    {
+        $user = User::find($id);
+        $user->role = $request->role;
+        $user->save();
+
+        return redirect()->route('validation');
     }
 
     /**

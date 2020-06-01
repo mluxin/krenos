@@ -42,6 +42,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/edit/{user}', 'UserController@edit')->name('user/edit');
     Route::post('/user/update/{user}', 'UserController@update')->name('user/update');
     Route::get('/user/destroy/{user}', 'UserController@destroy')->name('user/destroy');
+     // Users validation
+     Route::get('/validation', 'UserController@validation')->name('validation');
+     Route::get('/user/editRole/{user}', 'UserController@editRole')->name('user/editRole');
+     Route::post('/user/updateRole/{user}', 'UserController@updateRole')->name('user/updateRole');
 
     //Trainings
     Route::get('/trainings', 'TrainingController@index')->name('trainings/index');

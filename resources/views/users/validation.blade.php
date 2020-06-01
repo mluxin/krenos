@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Liste des utilisateurs : </div>
+                <div class="card-header">Liste des utilisateurs à valider :</div>
                 <div class="card-body">
-                    <button><a href="{{ route('users/create') }}">Créer un utilisateur</a></button>
+                <a href="{{ route('users/index') }}">Retour aux utilisateurs</a>
                     <table>
                         <tr>
                             <th>Nom</th>
@@ -17,10 +17,10 @@
                         </tr>
                         @foreach ($users as $user)
                         <tr>
-                            <td><a href="{{ route('user/show', $user->id) }}">{{ $user->name }}</a></td>
+                            <td>{{ $user->name }}</td>
                             <td>{{ $user->email }} </td>
                             <td>{{ $user->role }} </td>
-                            <td><a class="btn btn-primary" href="{{ route('user/edit', $user->id) }}">Edit</a> <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{ route('user/destroy', $user->id) }}">Delete</a></td>
+                            <td><a class="btn btn-primary" href="{{ route('user/editRole', $user->id) }}">Edit</a></td>
                         </tr>
                         @endforeach
                     </table>
