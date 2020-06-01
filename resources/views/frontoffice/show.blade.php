@@ -28,7 +28,7 @@
                         <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
                         @if($session->subscription < $session->max_subscription)
-                        @if(auth()->user() && is_null(auth()->user()->employee->sessions()->where('session_id', '=', $session->id)->first()))
+                        @if(auth()->user() || auth()->user()->default && is_null(auth()->user()->employee->sessions()->where('session_id', '=', $session->id)->first() ))
                         <td>
                           <form method="POST" action="{{ route('session/subscribe') }}">
                             @csrf

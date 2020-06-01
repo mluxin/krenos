@@ -22,7 +22,7 @@
                 </div>
             </div>
             <br/>
-            @if( auth()->user() && auth()->user()->role !== App\User::EMPLOYEE)
+            @if( auth()->user() && auth()->user()->role !== App\User::EMPLOYEE &&  auth()->user()->role !== App\User::DEFAULT)
             <div class="card">
                 <div class="card-header"> Inscrits pour la session {{ $session->label }} </div>
                 <div class="card-body">
