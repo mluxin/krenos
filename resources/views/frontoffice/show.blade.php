@@ -28,7 +28,7 @@
                         <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
                         @if($session->subscription < $session->max_subscription)
-                        @if(auth()->user() || auth()->user()->default && is_null(auth()->user()->employee->sessions()->where('session_id', '=', $session->id)->first() ))
+                        @if(!auth()->user() || auth()->user() && !is_null(auth()->user()->employee) && is_null(auth()->user()->employee->sessions()->where('session_id', '=', $session->id)->first() ))
                         <td>
                           <form method="POST" action="{{ route('session/subscribe') }}">
                             @csrf
@@ -36,14 +36,8 @@
                             <button type="submit">S'inscrire</button>
                           </form>
                         </td>
-                        @elseif(! auth()->user())
-                        <td>
-                          <form method="POST" action="{{ route('session/subscribe') }}">
-                            @csrf
-                            <input type="hidden" value="{{ $session->id }}" name="session">
-                            <button type="submit">S'inscrire</button>
-                          </form>
-                        </td>
+                        @elseif (auth()->user() && is_null(auth()->user()->employee))
+                          <td>Pas d'inscription possible</td>
                         @else
                         <td>
                           <form method="POST" action="{{ route('session/unsubscribe') }}">
