@@ -14,7 +14,7 @@ class Session extends Model
         'training_id',
         'room_id',
         'label',
-        'slot',
+        'training_day',
         'effective_duration',
         'subscription',
         'feedback',

@@ -11,13 +11,12 @@
                     <table>
                       <tr>
                           <th>Formations</th>
-                          <th>Actions</th>
+                          <th>Nombre de sessions</th>
                       </tr>
                     @foreach ($trainings as $training)
                     <tr>
                         <td><a href="{{ route('trainings/show', $training->id) }}">{{ $training->label }}</a></td>
-                        <td></td>
-                        
+                        <td>{{ $training->sessions->count() }}</td>
                     </tr>
                     @endforeach
                     </table>

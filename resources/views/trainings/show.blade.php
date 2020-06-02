@@ -17,9 +17,13 @@
                         <th>Dates</th>
                         <th>Salles</th>
                         <th>Inscrits</th>
+                        @if (auth()->user()->employee !== null)
                         <th>Détails</th>
+                        @endif
+                        @if(auth()->user()->role === App\User::ADMIN)
                         <th>Editer</th>
                         <th>Supprimer</th>
+                        @endif
                     </tr>
                     @foreach ($training->sessions as $session)
                     <tr>
@@ -28,9 +32,13 @@
                         <td>{{ $session->training_day }}</td>
                         <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
+                        @if (auth()->user()->employee !== null)
                         <td><a href="">S'inscrire</a></td>
+                        @endif
+                        @if(auth()->user()->role === App\User::ADMIN)
                         <td><a href="{{ route('session/edit', $session) }}">Editer</a></td>
                         <td><a href="{{ route('session/destroy', $session) }}">Supprimer</a></td>
+                        @endif
                     </tr>
                     @endforeach
                 </table>

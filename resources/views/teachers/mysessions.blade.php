@@ -11,13 +11,16 @@
                     <table>
                       <tr>
                           <th>Formations</th>
-                          <th>Actions</th>
+                          <th>Date</th>
+                          <th>Salle</th>
+                          <th>Nombres d'inscrits</th>
                       </tr>
                     @foreach ($sessions as $session)
                     <tr>
-                        <td>{{ $session->label }}</a></td>
-                        <td></td>
-                        
+                        <td><a href="{{ route('session/show', $session->id) }}">{{ $session->label }}</a></td>
+                        <td>{{ $session->training_day }}</td>
+                        <td>{{ $session->room->label }}</td>
+                        <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
                     </tr>
                     @endforeach
                     </table>
