@@ -6,15 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Formation #{{ $training->label }} par {{ $training->teacher->user->name }}</div>
-
                 <div class="card-body">
-
                     <h2>Ajouter une session :</h2>
-
-
                     <form method="POST" action="{{ route('session/store', $training) }}">
                         @csrf
-                        <div class="">
                         <div>
                             <label for="label">Nom de la session</label>
                             <input id="label" type="text" name="label" required autofocus>
