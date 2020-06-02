@@ -14,7 +14,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employee = Employee::all();
+
+        return view('employee.mysession', ['employee'=>$employee]);
     }
 
     /**

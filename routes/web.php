@@ -69,6 +69,8 @@ Route::middleware(['auth'])->group(function () {
     //Session
     Route::post('/subscribe', 'SessionController@subscribe')->name('session/subscribe');
     Route::post('/unsubscribe', 'SessionController@unsubscribe')->name('session/unsubscribe');
+    // See session of employee
+    Route::get('/mysession', 'EmployeeController@index')->name('employee/mysession');
   });
 
   //Sessions routes
