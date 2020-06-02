@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
   });
 
   Route::middleware(['checkTeacher'])->group(function () {
+    Route::get('/mytrainings', 'TeacherController@showTrainings')->name('teacher/mytrainings');
+    Route::get('/mysessions', 'TeacherController@showSessions')->name('teacher/mysessions');
 
   });
 
