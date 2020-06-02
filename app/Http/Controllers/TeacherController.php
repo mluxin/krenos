@@ -40,4 +40,11 @@ class TeacherController extends Controller
 
         return redirect()->back();
     }
+
+    public function addGrade(Session $session, Request $request)
+    {
+        $session->employees()->updateExistingPivot($request->employee, ['grade' => $request->grade]);
+
+        return redirect()->back();
+    }
 }

@@ -29,13 +29,29 @@
                         <tr>
                             <th>Noms</th>
                             <th>Notes</th>
-                            <th>Actions</th>
                         </tr>
                         @foreach ($session->employees as $employee)
                             <tr>
                                 <td>{{ $employee->user->name }}</td>
-                                <td>{{ $employee->pivot->where('session_id', '=', $session->id)->first()->grade }}</td>
-                                <td><a href="#">Désinscrire</a></td>
+                                @if ($employee->pivot->where('session_id', '=', $session->id)->first()->grade === null)
+                                    @if(auth()->user()->role === App\User::TEACHER)
+                                        <form method="POST" action="{{ route('teacher/grade', $session->id) }}">
+                                            @csrf
+                                            <input type="hidden" name="employee" value="{{ $employee->id }}">
+                                            <td>
+                                                <input type="number" name="grade" value="" class="form-control">
+                                                <!-- <td>{{ $employee->pivot->where('session_id', '=', $session->id)->first()->grade }}</td> -->
+                                                <button type="submit" class="btn btn-sm btn-primary">Ajouter une note</button>
+                                            </td>
+                                        </form>
+                                    @else
+                                        <td>
+                                        Pas de note
+                                        </td>
+                                    @endif
+                                @else
+                                    <td>{{ $employee->pivot->where('session_id', '=', $session->id)->first()->grade }}</td>
+                                @endif
                             </tr>
                         @endforeach
                         </table>

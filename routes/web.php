@@ -69,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mytrainings', 'TeacherController@showTrainings')->name('teacher/mytrainings');
     Route::get('/mysessions', 'TeacherController@showSessions')->name('teacher/mysessions');
     Route::post('/session/{session}/addfeedback', 'TeacherController@addFeedback')->name('teacher/feedback');
+    Route::post('/session/{session}/addgrade', 'TeacherController@addGrade')->name('teacher/grade');
   });
 
   Route::middleware(['checkEmployee'])->group(function () {
