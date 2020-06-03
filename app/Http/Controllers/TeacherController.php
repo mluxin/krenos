@@ -21,7 +21,6 @@ class TeacherController extends Controller
         $trainings = Training::query()->where('teacher_id',"=", $teacherId)->get();
 
         return view('teachers.mytrainings', ['trainings'=>$trainings]);
-        //
     }
 
     public function showSessions()
@@ -44,6 +43,23 @@ class TeacherController extends Controller
     public function addGrade(Session $session, Request $request)
     {
         $session->employees()->updateExistingPivot($request->employee, ['grade' => $request->grade]);
+
+        return redirect()->back();
+    }
+
+    public function showHours(Teacher $teacher)
+    {
+        $teacherId = Teacher::query()->where('user_id',"=", auth()->id())->first()->id;
+        $sessions = Session::query()->where('teacher_id',"=", $teacherId)->get();
+
+        return view('teachers.myhours', ['sessions'=>$sessions]);
+    }
+
+    public function addHours(Session $session, Request $request)
+    {
+        $session->update([
+            'effective_duration' => $request->effective_duration,
+        ]);
 
         return redirect()->back();
     }
