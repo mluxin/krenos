@@ -66,7 +66,6 @@
         </div>
     </div>
     <div class="row">
-<<<<<<< HEAD
     @if(auth()->user()->role === App\User::TEACHER)
         @if ($session->feedback === null)
             <div class="col-md-6">
