@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Sessions;
+
 use Illuminate\Http\Request;
+
 
 class EmployeeController extends Controller
 {
@@ -14,7 +17,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = Employee::all();
+        $employeeConnected = Employee::query()->where('user_id',"=", auth()->id())->first()->id;
+        $employee = Employee::find($employeeConnected);
 
         return view('employee.mysession', ['employee'=>$employee]);
     }
