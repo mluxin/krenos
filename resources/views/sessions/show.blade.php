@@ -10,7 +10,12 @@
                     <p>Prof : {{ $session->teacher->user->name }}</p>
                     <p>Date : {{ $session->training_day }}</p>
                     <p>Salle : {{ $session->room->label}} </p>
-                    <p>Places maximales : {{ $session->max_subscription}}</p>
+                    <p>Nombre d'heures :
+                    @if ($session->effective_duration != NULL)
+                    {{ $session->effective_duration}}</p>
+                    @else
+                    A renseigner à la fin de la session
+                    @endif
                     <p>Compte-rendu :
                     @if($session->feedback != NULL)
                     {{ $session->feedback }} </p>
@@ -63,17 +68,34 @@
     <div class="row">
     @if ($session->feedback === null)
         <div class="col-md-6">
-
             <div class="card">
                 <div class="card-header"> Compte rendu de la session {{ $session->label }}</div>
-
                 <div class="card-body">
-
                     <form method="POST" action="{{ route('teacher/feedback', $session->id) }}">
                         @csrf
                         <div class="form-group">
                             <label for="feedback">Ajouter votre compte rendu</label>
                             <textarea class="form-control" id="feedback" name="feedback" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Enregistrer
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endif
+    </div>
+    <div class="row">
+    @if ($session->effective_duration === null)
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"> Nombre d'heures réalisées pour la session {{ $session->label }}</div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('teacher/hours', $session->id) }}">
+                        @csrf
+                        <div class="form-group">
+                            <input type="number" name="effective_duration" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary">
                             Enregistrer

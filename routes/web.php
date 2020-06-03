@@ -47,6 +47,9 @@ Route::middleware(['auth'])->group(function () {
      Route::get('/user/editRole/{user}', 'UserController@editRole')->name('user/editRole');
      Route::post('/user/updateRole/{user}', 'UserController@updateRole')->name('user/updateRole');
 
+    // Hours per Teachers
+    Route::get('/hoursperteachers', 'SessionController@getHoursPerTeachers')->name('hoursperteachers');
+
     //Trainings
     Route::get('/trainings', 'TrainingController@index')->name('trainings/index');
     Route::get('/trainings/create', 'TrainingController@create')->name('trainings/create');
@@ -70,6 +73,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mysessions', 'TeacherController@showSessions')->name('teacher/mysessions');
     Route::post('/session/{session}/addfeedback', 'TeacherController@addFeedback')->name('teacher/feedback');
     Route::post('/session/{session}/addgrade', 'TeacherController@addGrade')->name('teacher/grade');
+    Route::post('/session/{session}/addhours', 'TeacherController@addHours')->name('teacher/hours');
+    Route::get('/myhours', 'TeacherController@showHours')->name('teacher/myhours');
   });
 
   Route::middleware(['checkEmployee'])->group(function () {

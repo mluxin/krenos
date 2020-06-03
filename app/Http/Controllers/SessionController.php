@@ -19,7 +19,7 @@ class SessionController extends Controller
      */
     public function index()
     {
-         $sessions = Session::all();
+        $sessions = Session::all();
 
         return view('sessions.index', ['sessions'=>$sessions]);
     }
@@ -218,4 +218,27 @@ class SessionController extends Controller
         return redirect()->back();
     }
 
+    public function getHoursPerTeachers()
+    {
+        $teachers = Teacher::all();
+
+        $hoursByTeacher = [];
+        foreach($teachers as $teacher)
+        {
+            $hoursByTeacher[$teacher->user->name] = [];
+            $sessions = $teacher->sessions;
+
+            foreach($sessions as $session)
+            {
+                if ($session->effective_duration != NULL)
+                {
+                    $hoursByTeacher[$teacher->user->name][$session->training_day] = $session->effective_duration;
+                }
+            }
+
+            $hoursByTeacher[$teacher->user->name]['Total'] = array_sum($hoursByTeacher[$teacher->user->name]);
+        }
+
+        return view('users.showHoursPerTeachers', ['hoursByTeacher'=>$hoursByTeacher]);
+    }
 }
