@@ -61,28 +61,31 @@
         </div>
     </div>
     <div class="row">
-    @if ($session->feedback === null)
-        <div class="col-md-6">
+    @if(auth()->user()->role === App\User::TEACHER)
+        @if ($session->feedback === null)
+            <div class="col-md-6">
 
-            <div class="card">
-                <div class="card-header"> Compte rendu de la session {{ $session->label }}</div>
+                <div class="card">
+                    <div class="card-header"> Compte rendu de la session {{ $session->label }}</div>
 
-                <div class="card-body">
+                    <div class="card-body">
 
-                    <form method="POST" action="{{ route('teacher/feedback', $session->id) }}">
-                        @csrf
-                        <div class="form-group">
-                            <label for="feedback">Ajouter votre compte rendu</label>
-                            <textarea class="form-control" id="feedback" name="feedback" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            Enregistrer
-                        </button>
-                    </form>
+                        <form method="POST" action="{{ route('teacher/feedback', $session->id) }}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="feedback">Ajouter votre compte rendu</label>
+                                <textarea class="form-control" id="feedback" name="feedback" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Enregistrer
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     @endif
+
     </div>
 </div>
 @endsection
