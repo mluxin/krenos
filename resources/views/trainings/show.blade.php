@@ -43,7 +43,9 @@
                     @endforeach
                 </table>
                 <br/>
+                @if(auth()->user()->role === App\User::ADMIN)
                 <a href="{{ route('sessions/create', $training) }}">Create a session for #{{ $training->label }}</a>
+                @endif
                 </div>
             </div>
         </div>
