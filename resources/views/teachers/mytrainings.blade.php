@@ -10,8 +10,8 @@
                 <div class="card-body">
                     <table>
                       <tr>
-                          <th>Formations</th>
-                          <th>Nombre de sessions</th>
+                          <th>Formation</th>
+                          <th>Nombres de sessions</th>
                       </tr>
                     @foreach ($trainings as $training)
                     <tr>

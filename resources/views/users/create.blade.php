@@ -19,7 +19,7 @@
                           <option value="{{ $role }}">{{ $role }}</option>
                         @endforeach
                         </select>
-                        <button type="submit">Create new user</button>
+                        <button class="btn btn-primary" type="submit">Create new user</button>
                 </form>
 
                 </div>

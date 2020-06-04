@@ -17,7 +17,7 @@
                             <div>
                                 <label for="training_day">Date</label>
                                 <input id="training_day" type="date" name="training_day" required autofocus value="{{ $session->training_day }}">
-                                <button type="button" id="check_valid" >check dispo</button>
+                                <button class="btn btn-warning" type="button" id="check_valid" >Vérifier les dispo</button>
                             </div>
                             <div id="dynamic_inputs" style="display : none;">
                                 <div>
@@ -32,7 +32,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit">Modifier</button>
+                            <button class="btn btn-primary" type="submit">Modifier</button>
                             <a href="{{ url()->previous() }}">Annuler</a>
                         </div>
                     </form>

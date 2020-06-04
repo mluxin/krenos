@@ -17,7 +17,7 @@
                                 @endforeach
                             </select>
                             <br>
-                            <button type=“submit” class="btn btn-primary">Create new training</button>
+                            <button type=“submit” class="btn btn-primary">Créer une nouvelle formation</button>
                     </form>
                 </div>
             </div>

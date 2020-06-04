@@ -30,7 +30,7 @@
                           <form method="POST" action="{{ route('session/subscribe') }}">
                             @csrf
                             <input type="hidden" value="{{ $session->id }}" name="session">
-                            <button type="submit">S'inscrire</button>
+                            <button class="btn btn-primary" type="submit">S'inscrire</button>
                           </form>
                         </td>
                         @elseif (auth()->user() && is_null(auth()->user()->employee))
@@ -42,7 +42,7 @@
                           <form method="POST" action="{{ route('session/unsubscribe') }}">
                             @csrf
                             <input type="hidden" value="{{ $session->id }}" name="session">
-                            <button type="submit">Désinscrire</button>
+                            <button class="btn btn-danger" type="submit">Désinscrire</button>
                           </form>
                         </td>
                         @endif

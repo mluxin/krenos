@@ -27,7 +27,7 @@
                                       @endforeach
                                   </select>
                             </div>
-                            <button type="submit">Edit</button>
+                            <button class="btn btn-primary" type="submit">Edit</button>
                             <a href="{{ url()->previous() }}">Annuler</a>
                         </div>
                 </form>

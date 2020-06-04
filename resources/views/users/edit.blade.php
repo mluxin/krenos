@@ -18,7 +18,7 @@
                           <option value="{{ $role }}">{{ $role }}</option>
                         @endforeach
                         </select>
-                        <button type="submit">Edit</button>
+                        <button class="btn btn-primary" type="submit">Edit</button>
                 </form>
 
                 </div>

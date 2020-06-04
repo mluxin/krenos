@@ -43,10 +43,10 @@
                                         <form method="POST" action="{{ route('teacher/grade', $session->id) }}">
                                             @csrf
                                             <input type="hidden" name="employee" value="{{ $employee->id }}">
-                                            <td>
-                                                <input type="number" name="grade" value="" class="form-control" min="0" max="20">
+                                            <td style="display:flex">
+                                                <input style="margin-right:10px" type="number" name="grade" value="" class="form-control" min="0" max="20">
                                                 <!-- <td>{{ $employee->pivot->where([['employee_id', '=', $employee->id],['session_id', '=', $session->id]])->first()->grade }}</td> -->
-                                                <button type="submit" class="btn btn-sm btn-primary">Ajouter une note</button>
+                                                <button type="submit" class="btn btn-sm btn-primary">Ajouter</button>
                                             </td>
                                         </form>
                                     @else

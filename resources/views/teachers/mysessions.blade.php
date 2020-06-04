@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <table>
                       <tr>
-                          <th>Formations</th>
+                          <th>Formation</th>
                           <th>Date</th>
                           <th>Salle</th>
                           <th>Nombres d'inscrits</th>

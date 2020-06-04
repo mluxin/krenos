@@ -18,7 +18,7 @@
                             <label for="training_day">Date</label>
                             <input id="training_day" type="date" name="training_day" required autofocus class="form-control">
                             <br>
-                            <button type="button" id="check_valid" class="btn btn-warning" >check dispo</button>
+                            <button type="button" id="check_valid" class="btn btn-warning" >Vérifier les dispo</button>
                         </div>
                         <div id="dynamic_inputs" style="display : none;">
                             <div>

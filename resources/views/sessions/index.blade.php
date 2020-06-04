@@ -10,14 +10,14 @@
                 <div class="card-body">
                     <table>
                     <tr>
-                        <th>Noms</th>
+                        <th>Nom</th>
                         <th>Prof de la session</th>
-                        <th>Formations</th>
-                        <th>Dates</th>
-                        <th>Salles</th>
-                        <th>Inscrits</th>
+                        <th>Formation</th>
+                        <th>Date</th>
+                        <th>Salle</th>
+                        <th>Inscrit</th>
                         <th>Création d'une session</th>
-                        <th>Action</th>
+                        <th>Modification d'une session</th>
                     </tr>
                     @foreach ($sessions as $session)
                     <tr>
@@ -27,8 +27,8 @@
                         <td>{{ $session->training_day }}</td>
                         <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
-                        <td><a href="{{ route('sessions/create', $session->training) }}">Créer</a></td>
-                        <td><a href="{{ route('session/edit', $session) }}">Editer</a></td>
+                        <td><a class="btn btn-primary" href="{{ route('sessions/create', $session->training) }}">Créer</a></td>
+                        <td><a class="btn btn-primary"  href="{{ route('session/edit', $session) }}">Editer</a></td>
                     </tr>
                     @endforeach
                     </table>

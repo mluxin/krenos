@@ -47,7 +47,7 @@
                             <form method="POST" action="{{ route('session/unsubscribe') }}">
                                 @csrf
                                 <input type="hidden" value="{{ $session->id }}" name="session">
-                                <button type="submit">Désinscrire</button>
+                                <button class="btn btn-danger" type="submit">Désinscrire</button>
                             </form>
                         </td>
                     </tr>

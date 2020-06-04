@@ -12,7 +12,7 @@
                 <form method="POST" action="{{ route('room/update', $room->id) }}">
                         @csrf
                         <input id="name" name="label" type="text" value="{{$room->label}}">
-                        <button type="submit">Edit</button>
+                        <button class="btn btn-primary" type="submit">Edit</button>
                 </form>
 
                 </div>
