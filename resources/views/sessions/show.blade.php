@@ -10,12 +10,14 @@
                     <p>Prof : {{ $session->teacher->user->name }}</p>
                     <p>Date : {{ $session->training_day }}</p>
                     <p>Salle : {{ $session->room->label}} </p>
-                    <p>Nombre d'heures :
-                    @if ($session->effective_duration != NULL)
-                    {{ $session->effective_duration}}</p>
-                    @else
-                    A renseigner à la fin de la session
-                    @endif
+                    @if(auth()->user()->role === App\User::TEACHER)
+                        <p>Nombre d'heures :
+                        @if ($session->effective_duration != NULL)
+                        {{ $session->effective_duration}}</p>
+                        @else
+                        A renseigner à la fin de la session
+                        @endif
+                    @endif                    
                     <p>Compte-rendu :
                     @if($session->feedback != NULL)
                     {{ $session->feedback }} </p>
