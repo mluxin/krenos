@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <div>
-                      <a href="{{ route('trainings/create') }}">Ajouter une formation</a>
+                      <button class="btn btn-primary" style="margin-bottom:20px"><a href="{{ route('trainings/create') }}" style="color:white;">Ajouter une formation</a></button>
                     </div>
                     <table>
                       <tr>

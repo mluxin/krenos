@@ -8,7 +8,7 @@
                 <div class="card-header">Liste des salles</div>
 
                 <div class="card-body">
-                <a class="btn btn-primary" href="{{ url('rooms/create') }}">Ajouter une salle</a>
+                <a class="btn btn-primary" href="{{ url('rooms/create') }}" style="margin-bottom:20px">Ajouter une salle</a>
 
                  <table>
                     <tr>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Users List : </div>
+                <div class="card-header">Liste des utilisateurs : </div>
 
                 <div class="card-body">
 
@@ -19,7 +19,7 @@
                           <option value="{{ $role }}">{{ $role }}</option>
                         @endforeach
                         </select>
-                        <button class="btn btn-primary" type="submit">Create new user</button>
+                        <button class="btn btn-primary" type="submit">Créer un utilisateur</button>
                 </form>
 
                 </div>

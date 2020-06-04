@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit the training {{$training->label}}</div>
+                <div class="card-header">Modifier la formation {{$training->label}}</div>
 
                 <div class="card-body">
 
@@ -27,7 +27,7 @@
                                       @endforeach
                                   </select>
                             </div>
-                            <button class="btn btn-primary" type="submit">Edit</button>
+                            <button class="btn btn-primary" type="submit">Modifier</button>
                             <a href="{{ url()->previous() }}">Annuler</a>
                         </div>
                 </form>

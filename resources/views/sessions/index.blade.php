@@ -8,6 +8,7 @@
                 <div class="card-header">Liste des sessions</div>
 
                 <div class="card-body">
+                
                     <table>
                     <tr>
                         <th>Nom</th>
@@ -16,8 +17,7 @@
                         <th>Date</th>
                         <th>Salle</th>
                         <th>Inscrit</th>
-                        <th>Création d'une session</th>
-                        <th>Modification d'une session</th>
+                        <th>Actions</th>
                     </tr>
                     @foreach ($sessions as $session)
                     <tr>
@@ -27,8 +27,7 @@
                         <td>{{ $session->training_day }}</td>
                         <td>{{ $session->room->label }}</td>
                         <td>{{ $session->subscription }} / {{ $session->max_subscription }}</td>
-                        <td><a class="btn btn-primary" href="{{ route('sessions/create', $session->training) }}">Créer</a></td>
-                        <td><a class="btn btn-primary"  href="{{ route('session/edit', $session) }}">Editer</a></td>
+                        <td style="display:flex"><a class="btn btn-primary" style="margin-right:10px" href="{{ route('sessions/create', $session->training) }}">Créer</a><a class="btn btn-primary"  href="{{ route('session/edit', $session) }}">Editer</a></td>
                     </tr>
                     @endforeach
                     </table>

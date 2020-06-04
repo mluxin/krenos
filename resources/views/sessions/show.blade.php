@@ -78,6 +78,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="feedback">Ajouter votre compte rendu</label>
+
                                 <textarea class="form-control" id="feedback" name="feedback" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">
