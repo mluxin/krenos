@@ -20,7 +20,7 @@ class EmployeeController extends Controller
         $employeeConnected = Employee::query()->where('user_id',"=", auth()->id())->first()->id;
         $employee = Employee::find($employeeConnected);
 
-        return view('employee.mysession', ['employee'=>$employee]);
+        return view('employee.mysessions', ['employee'=>$employee]);
     }
 
     /**

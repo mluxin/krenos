@@ -35,6 +35,8 @@
                         </td>
                         @elseif (auth()->user() && is_null(auth()->user()->employee))
                         <td>Pas d'inscription possible</td>
+                        @elseif ($session->training_day < date("Y-m-d"))
+                        <td>La session a déjà eu lieu</td>
                         @else
                         <td>
                           <form method="POST" action="{{ route('session/unsubscribe') }}">
