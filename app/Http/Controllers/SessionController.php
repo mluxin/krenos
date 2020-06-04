@@ -113,25 +113,30 @@ class SessionController extends Controller
 
     public function getRoomsAndTeachers(Request $request, $date)
     {
+        // Only for updating a session
         $sessionId = $request->get('session');
         $trainingDaySessions = Session::query()->where('training_day', '=', $date)->get();
 
         /**
         * We are editing a session, bc session is not null (has an id)
         */
-        if (!is_null($sessionId))
+        if ($sessionId != null)
         {
             // Exclude current session from trainingDaySessions array
             $currentSession = $trainingDaySessions->search(function($session) use($sessionId) {
                 return $session->id == $sessionId;
             });
-            $trainingDaySessions->pull($currentSession);
+
+            if ($currentSession)
+            {
+                $trainingDaySessions->pull($currentSession);
+            }
 
             // Push rooms' label into an array
             $roomsLabel = [];
             $rooms = Room::all()->each(function($room) use(&$roomsLabel){
                 $roomsLabel[$room->id] = $room->label;
-            });;
+            });
 
             // Push teachers' name into an array
             $teachersName = [];
