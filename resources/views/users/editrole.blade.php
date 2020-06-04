@@ -9,16 +9,16 @@
                 <div class="card-body">
                 <form method="POST" action="{{ route('user/updateRole', $user->id) }}">
                         @csrf
-                        <p>{{$user->name}}</p>
-                        <p>{{$user->email}}</p>
-                        <select name="role"  placeholder="Roles">
+                        <p>Nome : {{$user->name}}</p>
+                        <p>Adresse mail : {{$user->email}}</p>
+                        <select name="role"  placeholder="Roles" class="form-control">
                         @foreach ($roles as $role)
                           <option value="{{ $role }}">{{ $role }}</option>
                         @endforeach
                         </select>
-                        <button type="submit">Edit</button>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Edit</button>
                 </form>
-
                 </div>
             </div>
         </div>

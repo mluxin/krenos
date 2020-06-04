@@ -6,15 +6,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Add a room </div>
-
                 <div class="card-body">
-
                 <form method="POST" action="{{ route('room/store') }}">
                         @csrf
-                        <input id="name" name="label" type="text" placeholder="Label">
-                        <button type="submit">Add</button>
+                        <input id="name" name="label" type="text" placeholder="Label" class="form-control">
+                        <br>
+                        <button type="submit" class="btn btn-primary">Add</button>
                 </form>
-
                 </div>
             </div>
         </div>

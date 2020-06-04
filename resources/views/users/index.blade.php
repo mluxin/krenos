@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Liste des utilisateurs : </div>
                 <div class="card-body">
-                    <button><a href="{{ route('users/create') }}">Créer un utilisateur</a></button>
+                    <button class="btn"><a href="{{ route('users/create') }}">Créer un utilisateur</a></button>
                     <table>
                         <tr>
                             <th>Nom</th>

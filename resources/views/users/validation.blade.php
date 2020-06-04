@@ -20,7 +20,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }} </td>
                             <td>{{ $user->role }} </td>
-                            <td><a class="btn btn-primary" href="{{ route('user/editRole', $user->id) }}">Edit</a></td>
+                            <td><a class="btn btn-primary" href="{{ route('user/editRole', $user->id) }}">Attribuer un rôle</a></td>
                         </tr>
                         @endforeach
                     </table>

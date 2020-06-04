@@ -12,26 +12,30 @@
                         @csrf
                         <div>
                             <label for="label">Nom de la session</label>
-                            <input id="label" type="text" name="label" required autofocus>
+                            <input id="label" type="text" name="label" required autofocus class="form-control">
                         </div>
                         <div>
                             <label for="training_day">Date</label>
-                            <input id="training_day" type="date" name="training_day" required autofocus>
-                            <button type="button" id="check_valid" >check dispo</button>
+                            <input id="training_day" type="date" name="training_day" required autofocus class="form-control">
+                            <br>
+                            <button type="button" id="check_valid" class="btn btn-warning" >check dispo</button>
                         </div>
                         <div id="dynamic_inputs" style="display : none;">
                             <div>
+                                <br>
                                 <label for="teacher_id">Professeurs</label>
-                                <select name="teacher_id" id="teacher_id">
+                                <select name="teacher_id" id="teacher_id" class="form-control">
                                 </select>
                             </div>
                             <div>
+                                <br>
                                 <label for="room_id">Salle</label>
-                                <select name="room_id" id="room_id">
+                                <select name="room_id" id="room_id" class="form-control">
                                 </select>
                             </div>
                         </div>
-                            <button type="submit">
+                        <br>
+                            <button type="submit" class="btn btn-primary">
                                 Ajouter la session
                             </button>
                         </div>
